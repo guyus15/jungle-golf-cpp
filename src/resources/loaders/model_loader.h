@@ -5,6 +5,6 @@
 class ModelLoader : public Loader
 {
 public:
-    ResourceHandle Load();
+    ResourceHandle Load(const std::string &path);
     void Unload();
 };

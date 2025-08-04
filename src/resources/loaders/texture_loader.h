@@ -2,9 +2,9 @@
 
 #include "loader.h"
 
-class TextureLoad : public Loader
+class TextureLoader : public Loader
 {
 public:
-    ResourceHandle Load();
+    ResourceHandle Load(const std::string &path);
     void Unload();
 };

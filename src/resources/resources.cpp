@@ -1,7 +1,11 @@
 #include "resources.h"
+#include "loaders/model_loader.h"
+#include "loaders/texture_loader.h"
 
 ResourceManager::ResourceManager()
 {
+    m_model_loader = std::make_unique<ModelLoader>();
+    m_texture_loader = std::make_unique<TextureLoader>();
 }
 
 ResourceManager::~ResourceManager()
@@ -26,16 +30,14 @@ ResourceManager &ResourceManager::operator=(ResourceManager &&other)
     return *this;
 }
 
-void ResourceManager::Initialise()
+const ResourceHandle ResourceManager::LoadTexture(const std::string &path)
 {
+    auto handle = m_texture_loader->Load(path);
+    return handle;
 }
 
-const ResourceHandle ResourceManager::LoadTexture()
+const ResourceHandle ResourceManager::LoadModel(const std::string &path)
 {
-    return ResourceHandle();
-}
-
-const ResourceHandle ResourceManager::LoadModel()
-{
-    return ResourceHandle();
+    auto handle = m_model_loader->Load(path);
+    return handle;
 }
