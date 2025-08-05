@@ -8,11 +8,19 @@ workspace "jungle-golf"
         cppdialect "C++20"
 
         targetdir "bin/%{cfg.buildcfg}"
-        objdir "lib/%{cfg.buildcfg}"
+        objdir "libs/%{cfg.buildcfg}"
 
         files {
             "src/**.cpp",
             "src/**.h"
+        }
+
+        includedirs {
+            "thirdparty/assimp/include"
+        }
+
+        links {
+            "assimp"
         }
 
         filter "configurations:Debug"
@@ -25,3 +33,5 @@ workspace "jungle-golf"
         filter "configurations:Dist"
             defines { "JGDIST" }
             optimize "On"
+
+include "thirdparty/assimp/premake5"
